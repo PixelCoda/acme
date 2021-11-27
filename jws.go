@@ -66,7 +66,7 @@ func jwsEncodeJSON(claimset interface{}, key crypto.Signer, kid keyID, nonce, ur
 	default:
 		phead = fmt.Sprintf(`{"alg":%q,"kid":%q,"nonce":%q,"url":%q}`, alg, kid, nonce, url)
 	}
-	phead = String([]byte(phead))
+	phead = base64.RawURLEncoding.EncodeToString([]byte(phead))
 	var payload string
 	if claimset != noPayload {
 		cs, err := json.Marshal(claimset)

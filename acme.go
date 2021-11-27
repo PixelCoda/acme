@@ -371,9 +371,9 @@ func (c *Client) Register(ctx context.Context, acct *Account, prompt func(tosURL
 	if err != nil {
 		return nil, err
 	}
-	if dir.rfcCompliant() {
+	// if dir.rfcCompliant() {
 		return c.registerRFC(ctx, acct, prompt)
-	}
+	// }
 
 	// Legacy ACME draft registration flow.
 	a, err := c.doReg(ctx, dir.RegURL, "new-reg", acct)
